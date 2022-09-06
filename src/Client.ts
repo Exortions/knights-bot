@@ -9,6 +9,7 @@ import { settings as configuration } from './config/config';
 
 @Service()
 export class Client extends DiscordClient implements BotClient {
+    private interactions: {};
     public settings: BotSettings;
     public lastPing: number;
 
@@ -20,6 +21,7 @@ export class Client extends DiscordClient implements BotClient {
         this.initialize();
 
         this.lastPing = this.ws.ping;
+        this.interactions = {};
     }
 
     private async initialize(): Promise<void> {
