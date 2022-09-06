@@ -1,0 +1,42 @@
+{
+  "name": "knights-bot",
+  "version": "1.0.0",
+  "description": "Official Discord Bot for the Knights Brawl Stars club..",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsc && node dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Exortions/knights-bot.git"
+  },
+  "author": "Exortions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Exortions/knights-bot/issues"
+  },
+  "homepage": "https://github.com/Exortions/knights-bot#readme",
+  "dependencies": {
+    "discord.js": "12.3.1",
+    "dotenv": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.8.0",
+    "typescript": "^4.8.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^18.7.15",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-typescript": "^4.0.1",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
+  }
+}
