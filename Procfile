@@ -1,1 +1,1 @@
-worker: node dist/src/index.js
+worker: yarn test

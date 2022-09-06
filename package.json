@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Exortions/knights-bot#readme",
   "dependencies": {
+    "@types/node": "^18.7.15",
     "discord.js": "12.3.1",
     "dotenv": "^8.0.0",
     "node": "16.13.2",
@@ -28,7 +29,6 @@
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
-    "@types/node": "^18.7.15",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
