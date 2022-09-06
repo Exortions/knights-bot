@@ -4,7 +4,8 @@
   "description": "Official Discord Bot for the Knights Brawl Stars club..",
   "main": "src/index.ts",
   "scripts": {
-    "start": "tsc && node dist/src/index.js"
+    "start": "node dist/src/index.js",
+    "test": "tsc && node dist/src/index.js"
   },
   "repository": {
     "type": "git",
