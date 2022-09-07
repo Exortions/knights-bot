@@ -52,14 +52,14 @@ export default class Ping extends Command {
 
         const cl = new ClubLeagueManipulator();
 
-        const date = {
-            month: Number(season.split('/')[0]),
-            day: Number(season.split('/')[1]),
-            year: Number(season.split('/')[2]),
-        }
-
         if (season) {
-            const ssn = cl.getSeasons().find((s) => s.date);
+            const date = {
+                month: Number(season.split('/')[0]),
+                day: Number(season.split('/')[1]),
+                year: Number(season.split('/')[2]),
+            }
+
+            const ssn = cl.getSeasons().find((s) => s.date.month === date.month && s.date.day === date.day && s.date.year === date.year);
 
             const fields: { name: string; value: string }[] = [];
 
