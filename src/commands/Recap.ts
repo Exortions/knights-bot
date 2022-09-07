@@ -48,7 +48,7 @@ export default class Ping extends Command {
 
         const season = message.content.split(' ')[1];
 
-        const embed: MessageEmbed = new MessageEmbed();
+        let embed: MessageEmbed | null = null;
 
         const cl = new ClubLeagueManipulator();
 
@@ -130,7 +130,7 @@ export default class Ping extends Command {
                 value: `${leastTrophies.name} - ${leastTrophies.trophies}`,
             });
 
-            embed
+            embed = new MessageEmbed()
                 .setColor('#000000')
                 .setTitle(`Recap of Season ${season}`)
                 .setFooter('Knights Season Recap', this.botClient.user?.avatarURL() || undefined)
@@ -138,6 +138,6 @@ export default class Ping extends Command {
                 .setTimestamp();
         }
 
-        await super.respond(message.channel, embed);
+        if (embed !== null) await super.respond(message.channel, embed);
     }
 }
