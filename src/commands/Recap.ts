@@ -52,7 +52,7 @@ export default class Ping extends Command {
 
         const cl = new ClubLeagueManipulator();
 
-        console.log(season);)
+        console.log(season);
 
         if (season) {
             const date = {
