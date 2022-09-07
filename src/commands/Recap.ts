@@ -33,8 +33,6 @@ export default class Ping extends Command {
     }
 
     public async run(message: Message): Promise<void> {
-        message.delete();
-
         const REQUIRED_ROLE_ID = '1016550159645151354';
 
         const { member } = message;
