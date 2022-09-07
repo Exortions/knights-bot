@@ -80,12 +80,12 @@ export default class Ping extends Command {
                 ticketsUsed += player.tickets;
             });
 
-            let trophiesUSed = 0;
+            let trophiesUsed = 0;
 
             const MAX_TROPHIES = ssn.players.length * 63;
 
             ssn.players.forEach((player) => {
-                trophiesUSed += player.trophies;
+                trophiesUsed += player.trophies;
             });
 
             const mostTickets = ssn.players.reduce((prev, current) => (prev.tickets > current.tickets ? prev : current));
@@ -96,7 +96,7 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Amount of tickets used',
-                value: ticketsUsed.toString(),
+                value: `${ticketsUsed.toString()}/${  MAX_TICKETS.toString()}`,
             });
 
             fields.push({
@@ -106,12 +106,12 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Amount of trophies used',
-                value: trophiesUSed.toString(),
+                value: `${trophiesUsed.toString()}/${  MAX_TROPHIES.toString()}`,
             });
 
             fields.push({
                 name: 'Trophies to max percentage',
-                value: `${(trophiesUSed / MAX_TROPHIES) * 100}%`,
+                value: `${(trophiesUsed / MAX_TROPHIES) * 100}%`,
             });
 
             fields.push({
