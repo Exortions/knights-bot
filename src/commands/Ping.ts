@@ -5,7 +5,6 @@ import { Command } from '../Command';
 import { BotClient } from '../types';
 
 export default class Ping extends Command {
-    // botClient is any class that implements BotClient
     private botClient: BotClient;
 
     constructor(client: BotClient) {
