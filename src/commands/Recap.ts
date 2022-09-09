@@ -44,11 +44,22 @@ export default class Ping extends Command {
             return;
         }
 
-        const season = message.content.split(' ')[1];
+        let season = message.content.split(' ')[1];
 
         let embed: MessageEmbed | null = null;
 
         const cl = new ClubLeagueManipulator();
+
+        if (!season) {
+            const lastSeason = cl.getLastSeason();
+
+            if (!lastSeason) {
+                await this.sendErrorEmbed(super.respond, message, 'No season found.');
+                return;
+            }
+
+            season = `${lastSeason.month}/${lastSeason.day}/${lastSeason.year}`;
+        }
 
         if (season) {
             const date = {
