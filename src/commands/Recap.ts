@@ -97,7 +97,7 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Tickets vs max',
-                value: `${(ticketsUsed / MAX_TICKETS) * 100}%\n`,
+                value: `${(ticketsUsed / MAX_TICKETS) * 100}%\n\n`,
                 inline: true,
             });
 
