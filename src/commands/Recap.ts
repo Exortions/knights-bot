@@ -106,7 +106,7 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Tickets vs max',
-                value: `${((ticketsUsed / MAX_TICKETS) * 100).toFixed(2)}%\n\n`,
+                value: `${((ticketsUsed / MAX_TICKETS) * 100).toFixed(2)}%`,
                 inline: true,
             });
 
@@ -122,6 +122,12 @@ export default class Ping extends Command {
                 name: 'Trophies vs max',
                 value: `${((trophiesUsed / MAX_TROPHIES) * 100).toFixed(2)}%\n`,
                 inline: true,
+            });
+
+            fields.push({
+                name: 'Average trophies',
+                value: `${(trophiesUsed / ssn.players.length).toFixed(2)}`,
+                inline: false,
             });
 
             fields.push({
