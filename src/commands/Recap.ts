@@ -63,7 +63,7 @@ export default class Ping extends Command {
 
             console.log(ssn);
             
-            const fields: { name: string; value: string }[] = [];
+            const fields: { name: string; value: string; inline?: boolean }[] = [];
 
             if (!ssn) {
                 await this.sendErrorEmbed(super.respond, message, 'Season not found.');
@@ -86,45 +86,41 @@ export default class Ping extends Command {
                 trophiesUsed += player.trophies;
             });
 
-            const mostTickets = ssn.players.reduce((prev, current) => (prev.tickets > current.tickets ? prev : current));
-            const mostTrophies = ssn.players.reduce((prev, current) => (prev.trophies > current.trophies ? prev : current));
+            const topThreeTrophies = ssn.players.sort((a, b) => b.trophies - a.trophies);
 
             const leastTickets = ssn.players.reduce((prev, current) => (prev.tickets < current.tickets ? prev : current));
             const leastTrophies = ssn.players.reduce((prev, current) => (prev.trophies < current.trophies ? prev : current));
 
             fields.push({
-                name: 'Amount of tickets used',
+                name: 'Tickets used',
                 value: `${ticketsUsed.toString()}/${  MAX_TICKETS.toString()}`,
+                inline: true,
             });
 
             fields.push({
-                name: 'Tickets to max percentage',
-                value: `${(ticketsUsed / MAX_TICKETS) * 100}%`,
+                name: 'Tickets vs max',
+                value: `${(ticketsUsed / MAX_TICKETS) * 100}%\n`,
+                inline: true,
             });
 
             fields.push({
-                name: 'Amount of trophies used',
+                name: 'Trophies gained',
                 value: `${trophiesUsed.toString()}/${  MAX_TROPHIES.toString()}`,
+                inline: true,
             });
 
             fields.push({
-                name: 'Trophies to max percentage',
-                value: `${(trophiesUsed / MAX_TROPHIES) * 100}%`,
+                name: 'Trophies vs max',
+                value: `${(trophiesUsed / MAX_TROPHIES) * 100}%\n`,
+                inline: true,
             });
 
-            fields.push({
-                name: 'Most tickets used',
-                value: `${mostTickets.name} - ${mostTickets.tickets}`,
-            });
-
-            fields.push({
-                name: 'Most trophies',
-                value: `${mostTrophies.name} - ${mostTrophies.trophies}`,
-            });
+            fields.push({ name: 'Top Trophies', value: `1. ${topThreeTrophies[0].name} - ${topThreeTrophies[0].trophies}     2. ${topThreeTrophies[1].name} - ${topThreeTrophies[1].trophies}     3. ${topThreeTrophies[2].name} - ${topThreeTrophies[2].trophies}` });
 
             fields.push({
                 name: 'Least tickets used',
                 value: `${leastTickets.name} - ${leastTickets.tickets}`,
+                inline: true,
             });
 
             fields.push({
