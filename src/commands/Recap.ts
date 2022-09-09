@@ -89,13 +89,13 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Tickets used',
-                value: `${ticketsUsed.toString()}/${  MAX_TICKETS.toString()}`,
+                value: `${ticketsUsed.toString()}/${MAX_TICKETS.toString()}`,
                 inline: true,
             });
 
             fields.push({
                 name: 'Tickets vs max',
-                value: `${(ticketsUsed / MAX_TICKETS) * 100}%\n\n`,
+                value: `${((ticketsUsed / MAX_TICKETS) * 100).toFixed(2)}%\n\n`,
                 inline: true,
             });
 
@@ -109,7 +109,7 @@ export default class Ping extends Command {
 
             fields.push({
                 name: 'Trophies vs max',
-                value: `${(trophiesUsed / MAX_TROPHIES) * 100}%\n`,
+                value: `${((trophiesUsed / MAX_TROPHIES) * 100).toFixed(2)}%\n`,
                 inline: true,
             });
 
