@@ -96,8 +96,10 @@ export default class Ping extends Command {
             fields.push({
                 name: 'Tickets vs max',
                 value: `${(ticketsUsed / MAX_TICKETS) * 100}%\n\n`,
-                inline: false,
+                inline: true,
             });
+
+            fields.push({ name: 'Top Trophies', value: `**1.** ${topThreeTrophies[0].name} - ${topThreeTrophies[0].trophies}     **2.** ${topThreeTrophies[1].name} - ${topThreeTrophies[1].trophies}     **3.** ${topThreeTrophies[2].name} - ${topThreeTrophies[2].trophies}` });
 
             fields.push({
                 name: 'Trophies gained',
@@ -110,8 +112,6 @@ export default class Ping extends Command {
                 value: `${(trophiesUsed / MAX_TROPHIES) * 100}%\n`,
                 inline: true,
             });
-
-            fields.push({ name: 'Top Trophies', value: `**1.** ${topThreeTrophies[0].name} - ${topThreeTrophies[0].trophies}     **2.** ${topThreeTrophies[1].name} - ${topThreeTrophies[1].trophies}     **3.** ${topThreeTrophies[2].name} - ${topThreeTrophies[2].trophies}` });
 
             fields.push({
                 name: 'Least tickets used',
