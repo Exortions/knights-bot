@@ -61,8 +61,6 @@ export default class Ping extends Command {
 
             const ssn = cl.getSeasons().find((s) => s.date.month === date.month && s.date.day === date.day && s.date.year === date.year);
 
-            console.log(ssn);
-            
             const fields: { name: string; value: string; inline?: boolean }[] = [];
 
             if (!ssn) {
