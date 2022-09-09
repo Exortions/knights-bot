@@ -126,6 +126,7 @@ export default class Ping extends Command {
             fields.push({
                 name: 'Least trophies',
                 value: `${leastTrophies.name} - ${leastTrophies.trophies}`,
+                inline: true,
             });
 
             embed = new MessageEmbed()
