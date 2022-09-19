@@ -77,6 +77,13 @@ export default class Ping extends Command {
                 return;
             }
 
+            if (ssn.players.length < 3) {
+                await this.sendErrorEmbed(super.respond, message, 'Not enough players to create a recap.');
+                return;
+            }
+
+            console.log(season);
+
             let ticketsUsed = 0;
 
             const MAX_TICKETS = ssn.players.length * 14;

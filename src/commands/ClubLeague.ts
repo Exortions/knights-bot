@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-case-declarations */
 import { Message, MessageEmbed } from 'discord.js';
@@ -23,7 +24,7 @@ export default class ClubLeague extends Command {
         this.botClient = client;
     }
 
-    public static MINIMUM_TICKETS = 1;
+    public static MINIMUM_TICKETS = 8;
 
     private async sendErrorEmbed(respond: any, message: Message, error: string): Promise<void> {
         const embed = new MessageEmbed()
@@ -70,9 +71,7 @@ export default class ClubLeague extends Command {
         let season: any;
         let ssn: any;
 
-        const last = cl.getLastSeason();
-
-        if (last === null) return;
+        const last = cl.getLastSeason(); 
 
         switch (command) {
             case 'season':
@@ -95,6 +94,13 @@ export default class ClubLeague extends Command {
                     .split(' ')
                     .slice(5)
                     .join(' ');
+
+                player = player.replace(/\s/g, '');
+
+                if (isNaN(trophies) || isNaN(tickets)) {
+                    await this.sendErrorEmbed(super.respond, message, 'Please provide a valid number for trophies and tickets.');
+                    return;
+                }
 
                 if (!player || trophies === undefined || tickets === undefined) {
                     await this.sendErrorEmbed(super.respond, message, 'Usage: $cl set <player> <trophies> <tickets>');
@@ -127,6 +133,11 @@ export default class ClubLeague extends Command {
 
                 if (data === null) {
                     await this.sendErrorEmbed(super.respond, message, `Player ${player} not found.`);
+                    return;
+                }
+
+                if (last === null) {
+                    await this.sendErrorEmbed(super.respond, message, 'No club league seasons found.');
                     return;
                 }
 

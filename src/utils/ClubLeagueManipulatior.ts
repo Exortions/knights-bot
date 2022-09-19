@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import { ClubLeague, ClubLeagueDate, ClubLeaguePlayer, ClubLeagueSeason } from '../types/index';
 
 export default class ClubLeagueManipulator {
+    public static CLUB_LEAGUE_FOLDER = './data/';
     public static CLUB_LEAGUE_FILE = 'data/club_league.json';
 
     constructor() {
@@ -10,11 +11,15 @@ export default class ClubLeagueManipulator {
     }
 
     private createFile(): void {
-        if (!fs.existsSync(ClubLeagueManipulator.CLUB_LEAGUE_FILE))
-            fs.writeFileSync(
-                ClubLeagueManipulator.CLUB_LEAGUE_FILE,
-                JSON.stringify({ last_season: null, seasons: [] }),
-            );
+        if (!fs.existsSync(ClubLeagueManipulator.CLUB_LEAGUE_FOLDER))
+            fs.mkdirSync(ClubLeagueManipulator.CLUB_LEAGUE_FOLDER);
+
+        if (!fs.existsSync)
+            if (!fs.existsSync(ClubLeagueManipulator.CLUB_LEAGUE_FILE))
+                fs.writeFileSync(
+                    ClubLeagueManipulator.CLUB_LEAGUE_FILE,
+                    JSON.stringify({ last_season: null, seasons: [] }),
+                );
     }
 
     public getLastSeason(): ClubLeagueDate | null {
@@ -32,7 +37,7 @@ export default class ClubLeagueManipulator {
 
         clubLeague.seasons.push({ date, players });
 
-        if (clubLeague.last_season === null) clubLeague.last_season = date;
+        clubLeague.last_season = date;
 
         fs.writeFileSync(ClubLeagueManipulator.CLUB_LEAGUE_FILE, JSON.stringify(clubLeague));
     }
@@ -91,5 +96,11 @@ export default class ClubLeagueManipulator {
         });
 
         return foundPlayer;
+    }
+
+    public getAdminInfo(): string {
+        const raw = fs.readFileSync(ClubLeagueManipulator.CLUB_LEAGUE_FILE).toString();
+
+        return raw;
     }
 }

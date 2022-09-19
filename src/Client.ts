@@ -6,6 +6,7 @@ import { BotSettings, BotClient } from './types';
 import { Command } from './Command';
 import { ActionManager } from './managers/ActionManager';
 import { settings as configuration } from './config/config';
+import ClubLeagueManipulator from './utils/ClubLeagueManipulatior';
 
 @Service()
 export class Client extends DiscordClient implements BotClient {
@@ -29,6 +30,9 @@ export class Client extends DiscordClient implements BotClient {
             this.actionManager.initializeCommands(this);
             this.actionManager.initializeEvents(this);
             await this.login(configuration.token);
+
+            // eslint-disable-next-line no-new
+            new ClubLeagueManipulator();
         } catch (e) {
             Logger.error(`Could not initialize bot: ${e}`);
         }
